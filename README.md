@@ -1,6 +1,7 @@
 # Basic-File-Encryption
 
-
+The following code represents a File-Encryption program for educational purposes only. 
+It is inspired by a tutorial I watched and serves the purpose of enhancing understanding about encryption concepts.
 
 -------------
 
