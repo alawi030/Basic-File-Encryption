@@ -6,10 +6,10 @@
 
 # DISCLAIMER
 
-The ransomware is intended solely for educational purposes and knowledge sharing.
+### The ransomware is intended solely for educational purposes and knowledge sharing.
 
-It is strictly prohibited to utilize this code or any associated techniques to cause harm, 
-engage in illegal activities, or compromise the security and privacy of individuals or systems
+### It is strictly prohibited to utilize this code or any associated techniques to cause harm, 
+### engage in illegal activities, or compromise the security and privacy of individuals or systems
 
 -------------
 
