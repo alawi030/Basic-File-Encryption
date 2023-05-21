@@ -16,11 +16,10 @@ engage in illegal activities, or compromise the security and privacy of individu
 # What's a Ransomware?
 
 A ransomware is a malicious software that specifically targets and restricts legitimate users from accessing their devices or data.
-
 It operates by demanding a ransom payment in exchange for restoring the normal functionality of the affected system. 
 Ransomware has gained prominence as a widespread extortion tool, with the most successful variant being encryption-based ransomware. 
-
 This particular type encrypts the victim's data, and the decryption key is provided only after the ransom is paid to the attacker.
+
 For a ransomware to achieve broad success, it typically needs to satisfy three key conditions:
 
 **Condition 1**: The malicious binary code does not contain any easily accessible secrets, such as decryption keys. In some cases, advanced techniques like white box cryptography are employed to achieve this.
