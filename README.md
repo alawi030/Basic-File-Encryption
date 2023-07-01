@@ -1,28 +1,41 @@
-# Basic-File-Encryption
+# Baisc File Encryption
+## Description
+This is a simple file encryption program written in Python. It uses the Fernet module from the cryptography package to encrypt and decrypt files. The program is run from the command line and takes two arguments: the name of the file to be encrypted/decrypted and the name of the file to be created. The program will prompt the user for a password to encrypt the file with. The password is then used to decrypt the file. The program will not run if the file to be created already exists.
 
-The following code represents a File-Encryption program (Ransomware) for educational purposes only. 
-It is inspired by a tutorial I watched and serves the purpose of enhancing understanding about encryption concepts.
+## Installation
+1. Clone the repository:
+```bash
+git clone
+```
+2. Navigate to the project directory:
+```bash
+cd Basic-File-Encryption
+```
+3. Install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
 
--------------
+## Usage
+### Encrypting a file
+1. Run the program:
+```bash
+python encrypt.py <file_to_encrypt> <file_to_create>
+```
+2. Enter a password to encrypt the file with.
 
-# DISCLAIMER
+### Decrypting a file
+1. Run the program:
+```bash
+python decrypt.py <file_to_decrypt> <file_to_create>
+```
+2. Enter the password used to encrypt the file.
 
-### The ransomware is intended solely for educational purposes and knowledge sharing.
-### It is strictly prohibited to utilize this code or any associated techniques to cause harm, engage in illegal activities, or compromise the security and privacy of individuals or systems.
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please create an issue or submit a pull request.
 
--------------
+## License
+This project is licensed under the [MIT License](Licence.txt).
 
-# What's a Ransomware?
-
-A ransomware is a malicious software that specifically targets and restricts legitimate users from accessing their devices or data.
-It operates by demanding a ransom payment in exchange for restoring the normal functionality of the affected system. 
-Ransomware has gained prominence as a widespread extortion tool, with the most successful variant being encryption-based ransomware. 
-This particular type encrypts the victim's data, and the decryption key is provided only after the ransom is paid to the attacker.
-
-For a ransomware to achieve broad success, it typically needs to satisfy three key conditions:
-
-**Condition 1**: The malicious binary code does not contain any easily accessible secrets, such as decryption keys. In some cases, advanced techniques like white box cryptography are employed to achieve this.
-
-**Condition 2**: The ability to decrypt the compromised device remains solely with the attacker who initiated the ransomware attack.
-
-**Condition 3**: Decrypting one device does not provide any useful information for other infected devices. As a result, the decryption key is not shared among them.
+## Acknowledgements
+The Basic File Encryption program was developed using Python and the cryptography package.
